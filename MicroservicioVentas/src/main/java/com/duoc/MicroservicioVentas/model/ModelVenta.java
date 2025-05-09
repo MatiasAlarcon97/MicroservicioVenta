@@ -1,12 +1,11 @@
 package com.duoc.MicroservicioVentas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import jakarta.persistence.GenerationType;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +22,6 @@ public class ModelVenta {
     private LocalDate fecha;
     private Double monto_total;
     private String factura;
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
+    private List<VentaProducto> productos;
 }

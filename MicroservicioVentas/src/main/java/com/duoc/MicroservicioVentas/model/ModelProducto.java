@@ -1,12 +1,11 @@
 package com.duoc.MicroservicioVentas.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
-import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -21,5 +20,7 @@ public class ModelProducto {
     private Integer cantidad;
     private Double valor;
 
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    private List<VentaProducto> ventas;
 
 }
