@@ -17,7 +17,7 @@ public class ModelVenta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_venta;
+    private Long idVenta;
 
     private LocalDate fecha;
     private Double monto_total;
