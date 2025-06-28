@@ -1,8 +1,10 @@
 package com.duoc.MicroservicioVentas.controller;
 
+import com.duoc.MicroservicioVentas.dto.VentaConEnvioDTO;
 import com.duoc.MicroservicioVentas.model.ModelVenta;
 import com.duoc.MicroservicioVentas.service.ServiceVenta;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +20,13 @@ public class ControllerVenta {
     @PostMapping
     public ModelVenta crearVenta(@RequestBody ModelVenta venta) {
         return serviceVenta.crearVenta(venta);
+    }
+
+
+    @PostMapping("/crear-con-envio")
+    public ResponseEntity<ModelVenta> crearVentaConEnvio(@RequestBody VentaConEnvioDTO dto) {
+        ModelVenta ventaCreada = serviceVenta.crearVentaConEnvio(dto);
+        return ResponseEntity.ok(ventaCreada);
     }
 
     @PutMapping("/{id}")
